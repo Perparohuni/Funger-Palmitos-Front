@@ -1,4 +1,4 @@
-body {
+form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,22 +11,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 2rem;
     box-shadow: -5px 5px 5px black;
     border: 2px solid black;
+    height: 53rem;
+}
+
+.trevos{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 img {
     width: 10rem;
-}
-
-.img-a {
-    margin-left: auto;
-}
-
-.img-b {
-    margin-right: auto;
 }
 
 input{
@@ -37,4 +35,10 @@ input{
 button {
     font-size: 2rem;
     width: 10rem;
+}
+
+.notificacoes {
+    background-color: yellow;
+    color: red;
+    padding: 1rem;
 }

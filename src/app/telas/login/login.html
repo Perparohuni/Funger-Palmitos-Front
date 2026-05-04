@@ -1,16 +1,23 @@
 <body>
-    <div class="login-wrapper">
-        <h1>Bem vindo ao Funger Palmitos</h1>
-        <img class="img-a" src="trevo 4.png" alt="">
-        <p-floatlabel>
-            <input pInputText id="login" [(ngModel)]="login">
-            <label for="login">Login</label>
-        </p-floatlabel>
-        <p-floatlabel>
-            <input pInputText id="senha" [(ngModel)]="senha">
-            <label for="senha">Senha</label>
-        </p-floatlabel>
-        <button pButton>Entrar</button>
-        <img class="img-b" src="trevo 4.png" alt="">
-    </div>
+    <form (ngSubmit)="acesso()">
+        <div class="login-wrapper">
+            <h1>Bem vindo ao Funger Palmitos</h1>
+            <div class="trevos">
+                <img class="img-b" src="trevo 4.png" alt="">
+                <img class="img-a" src="trevo 4.png" alt="">
+            </div>
+            <p-floatlabel>
+                <input pInputText id="login" [(ngModel)]="login" type="text" name="login">
+                <label for="login">Login</label>
+            </p-floatlabel>
+            <p-floatlabel>
+                <input pInputText id="senha" [(ngModel)]="senha" type="password" name="senha">
+                <label for="senha">Senha</label>
+            </p-floatlabel>
+            <button pButton>Entrar</button>
+            @if(aviso) {
+                <div class="notificacoes">{{avisos}}</div>
+            }
+        </div>
+    </form>
 </body>

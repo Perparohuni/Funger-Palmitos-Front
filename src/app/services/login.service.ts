@@ -6,7 +6,7 @@ import { LoginDTO } from "../dto/loginDTO";
     providedIn:'root'
 })
 export class LoginService {
-    private url = "http://localhost:8080/auth/login";
+    private url = "http://localhost:8081/login";
 
     constructor(private http: HttpClient) {}
 
