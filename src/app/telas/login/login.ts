@@ -38,9 +38,19 @@ export class Login {
     this.loginService.login(dto)
     .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        localStorage.setItem('token', res.dados);
+        console.log(res);
+        const mestre: boolean = res.dados.mestre;
+        localStorage.setItem('token', res.dados.token);
+        localStorage.setItem('login', res.dados.login);
+        localStorage.setItem('mestre', res.dados.mestre);
         this.aviso = false;
-        this.router.navigate(['/dashboardMestre']);
+        if(mestre) {
+          this.router.navigate(['/dashboardMestre']);
+        }
+        else{
+          this.router.navigate(['/campanhas']);
+        }
+       
       },
       error: (err) => {
         this.aviso = true; 
