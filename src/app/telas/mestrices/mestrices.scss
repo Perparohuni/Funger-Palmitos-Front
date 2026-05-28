@@ -1,0 +1,35 @@
+.page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page {
+    background-color: var(--fundoConteudo);
+    height: 53rem;
+    width: 115rem;
+    margin-top: 2rem;
+    border: 2px solid black;
+    box-shadow: -5px 5px 5px;
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    width: 60%;
+    margin-top: 0.42rem;
+    padding: 1.5rem 10rem;
+    border-radius: 2rem;
+}
+
+a {
+    background-color: gray;
+    border: none;
+}
+
+a:hover {
+    background-color: rgb(146, 145, 145) !important;
+    border: none !important;
+}

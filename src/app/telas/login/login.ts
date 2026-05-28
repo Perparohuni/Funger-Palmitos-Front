@@ -38,14 +38,13 @@ export class Login {
     this.loginService.login(dto)
     .pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        console.log(res);
         const mestre: boolean = res.dados.mestre;
         localStorage.setItem('token', res.dados.token);
         localStorage.setItem('login', res.dados.login);
         localStorage.setItem('mestre', res.dados.mestre);
         this.aviso = false;
         if(mestre) {
-          this.router.navigate(['/dashboardMestre']);
+          this.router.navigate(['/mestrices']);
         }
         else{
           this.router.navigate(['/campanhas']);
@@ -54,7 +53,12 @@ export class Login {
       },
       error: (err) => {
         this.aviso = true; 
-        this.avisos = err.error.mensagem;
+        if(err.error.mensagem) {
+          this.avisos = err.error.mensagem;
+        }
+        else {
+          this.avisos = "Le mister sistema não está rodando agora, mals aí muleke";
+        }
         this.cdr.detectChanges();
         }
     });
