@@ -1,0 +1,32 @@
+div{
+    display: flex;
+    justify-content: center;
+}
+header {
+    font-size: 3rem;
+    max-width: 70%;
+    text-align: center;
+}
+main {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 70%;
+    max-height: 30rem;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+a {
+    padding: 3rem;
+    text-decoration: none;
+    font-size: 3rem;
+    border-radius: 32px;
+}
