@@ -7,29 +7,39 @@ import { Mestrices } from './telas/mestrices/mestrices';
 import { mestreGuard } from './guards/mestre-guard';
 import { Perdido } from './rota-errada/perdido/perdido';
 import { Trapaceiro } from './rota-errada/trapaceiro/trapaceiro';
+import { CampanhasForm } from './telas/mestrices/campanhas-list/campanhas-form/campanhas-form';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/login', pathMatch:'full'},
-    {path: 'login', component: Login},
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component: Login },
 
-    {path: 'mestrices', component: Mestrices, canActivate: [mestreGuard], children: 
-        [
-        {
-            path:'', redirectTo: 'dashboardMestre', pathMatch:'full'
-        },
-        {
-            path: 'dashboardMestre', component: DashboardMestre
-        },
-        {
-            path:'campanhasList', component: CampanhasList
-        }
-        ]},
+    {
+        path: 'mestrices',
+        component: Mestrices,
+        canActivate: [mestreGuard],
+        children: [
+            {
+                path: '',
+                redirectTo: 'dashboardMestre',
+                pathMatch: 'full',
+            },
+            {
+                path: 'dashboardMestre',
+                component: DashboardMestre,
+            },
+            {
+                path: 'campanhasList',
+                component: CampanhasList,
+                children: [{ path: '', component: CampanhasForm }],
+            },
+        ],
+    },
 
-    {path: 'campanhas', component: Campanhas},
+    { path: 'campanhas', component: Campanhas },
 
-    {path: 'trapaceiro', component: Trapaceiro},
+    { path: 'trapaceiro', component: Trapaceiro },
 
-    {path: 'perdido', component: Perdido},
+    { path: 'perdido', component: Perdido },
 
-    {path:'**', redirectTo:'perdido'}
+    { path: '**', redirectTo: 'perdido' },
 ];

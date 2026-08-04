@@ -1,0 +1,55 @@
+<div class="wrapper">
+    <p-card class="card">
+        <div class="create">
+            <p-button icon="pi pi-plus" severity="info" (click)="criar.emit()" rounded> </p-button>
+        </div>
+        <p-table
+            [value]="dados"
+            showGridlines
+            stripedRows
+            [paginator]="true"
+            [rows]="5"
+            [rowsPerPageOptions]="[5, 10, 20, 50, 100, 500]"
+            [totalRecords]="totalRecords"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    @for (coluna of colunas; track coluna.field) {
+                        <th class="header" style="">
+                            {{ coluna.header }}
+                        </th>
+                    }
+                    <th class="header">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-linha>
+                <tr>
+                    @for (coluna of colunas; track coluna.field) {
+                        @if (coluna.type === 'string') {
+                            <td>
+                                {{ linha[coluna.field] }}
+                            </td>
+                        }
+                        @if (coluna.type === 'text') {
+                            <td>
+                                <p-card>
+                                    <div (click)="onCardClick(linha[coluna.field])" style="max-height: 3rem">
+                                        {{ linha[coluna.field] }}
+                                    </div>
+                                </p-card>
+                            </td>
+                        }
+                    }
+                    <td>
+                        <div class="actions">
+                            <p-button icon="pi pi-pencil" (click)="editar.emit(linha)"> </p-button>
+                            <p-button icon="pi pi-trash" severity="danger" (click)="excluir.emit(linha)"> </p-button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
+</div>
+
+<p-dialog [visible]="showCardDialog"> Ola </p-dialog>
