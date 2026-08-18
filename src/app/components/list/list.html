@@ -1,7 +1,7 @@
 <div class="wrapper">
     <p-card class="card">
         <div class="create">
-            <p-button icon="pi pi-plus" severity="info" (click)="criar.emit()" rounded> </p-button>
+            <p-button icon="pi pi-plus" severity="info" (click)="criar.emit()" rounded [label]="'Novo'"> </p-button>
         </div>
         <p-table
             [value]="dados"
@@ -15,7 +15,7 @@
             <ng-template pTemplate="header">
                 <tr>
                     @for (coluna of colunas; track coluna.field) {
-                        <th class="header" style="">
+                        <th class="header">
                             {{ coluna.header }}
                         </th>
                     }
@@ -32,18 +32,20 @@
                         }
                         @if (coluna.type === 'text') {
                             <td>
-                                <p-card>
-                                    <div (click)="onCardClick(linha[coluna.field])" style="max-height: 3rem">
-                                        {{ linha[coluna.field] }}
-                                    </div>
-                                </p-card>
+                                <div (click)="onCardClick(linha[coluna.field])" style="cursor: pointer">
+                                    <p-card>
+                                        <div style="max-height: 3rem">
+                                            {{ linha[coluna.field] }}
+                                        </div>
+                                    </p-card>
+                                </div>
                             </td>
                         }
                     }
                     <td>
                         <div class="actions">
-                            <p-button icon="pi pi-pencil" (click)="editar.emit(linha)"> </p-button>
-                            <p-button icon="pi pi-trash" severity="danger" (click)="excluir.emit(linha)"> </p-button>
+                            <p-button icon="pi pi-pencil" (click)="editar.emit(linha.id)"> </p-button>
+                            <p-button icon="pi pi-trash" severity="danger" (click)="excluir.emit(linha.id)"> </p-button>
                         </div>
                     </td>
                 </tr>
@@ -52,4 +54,4 @@
     </p-card>
 </div>
 
-<p-dialog [visible]="showCardDialog"> Ola </p-dialog>
+<p-dialog [visible]="showCardDialog"> {{ texto }} </p-dialog>

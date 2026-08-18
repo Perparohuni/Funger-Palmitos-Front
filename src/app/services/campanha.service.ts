@@ -1,18 +1,26 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { CampanhaDTO } from "../dto/campanhaDTO";
-import { PageDTO } from "../dto/pageDTO";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CampanhaDTO } from '../dto/campanhaDTO';
+import { PageDTO } from '../dto/pageDTO';
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root',
 })
 export class CampanhaService {
-    private url = "http://localhost:8081/mestrices/campanhas";
+    private url = 'http://localhost:8081/mestrices/campanhas';
 
     constructor(private http: HttpClient) {}
 
+    findById(id: number): Observable<CampanhaDTO> {
+        return this.http.get<CampanhaDTO>(this.url + '/' + id);
+    }
+
     getAll(): Observable<PageDTO<CampanhaDTO>> {
         return this.http.get<PageDTO<CampanhaDTO>>(this.url);
+    }
+
+    save(dto: CampanhaDTO): Observable<CampanhaDTO> {
+        return this.http.post<CampanhaDTO>(this.url, dto);
     }
 }

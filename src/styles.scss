@@ -1,14 +1,14 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Comic Sans MS';
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS';
 }
 
 :root {
-  --fundo: rgb(157, 197, 124);
-  --fundoConteudo: rgb(68, 216, 221);
+    --fundo: rgb(157, 197, 124);
+    --fundoConteudo: rgb(68, 216, 221);
 }
 
 html {
-  background-color: var(--fundo);
+    background-color: var(--fundo);
 }

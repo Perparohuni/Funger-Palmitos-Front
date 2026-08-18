@@ -23,19 +23,19 @@ export class List<T extends AbstractDTO> {
     totalRecords: number = 0;
 
     @Output()
-    editar = new EventEmitter<any>();
+    editar = new EventEmitter<number>();
 
     @Output()
-    excluir = new EventEmitter<any>();
+    excluir = new EventEmitter<number>();
 
     @Output()
-    criar = new EventEmitter<any>();
+    criar = new EventEmitter<void>();
 
     texto!: string;
     showCardDialog: boolean = false;
 
     onCardClick(texto: string) {
         this.texto = texto;
-        this.showCardDialog = true;
+        this.showCardDialog = !this.showCardDialog;
     }
 }

@@ -27,11 +27,10 @@ export const routes: Routes = [
                 path: 'dashboardMestre',
                 component: DashboardMestre,
             },
-            {
-                path: 'campanhasList',
-                component: CampanhasList,
-                children: [{ path: '', component: CampanhasForm }],
-            },
+
+            { path: 'campanhasList', component: CampanhasList },
+            { path: 'campanhasList/novo', component: CampanhasForm },
+            { path: 'campanhasList/:id', component: CampanhasForm },
         ],
     },
 

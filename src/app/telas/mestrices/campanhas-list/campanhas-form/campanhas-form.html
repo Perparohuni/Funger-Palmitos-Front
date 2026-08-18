@@ -1,1 +1,38 @@
-<p>campanhas-form works!</p>
+<div class="wrapper">
+    <p-card class="card grid">
+        <div class="header mb-5">
+            <p-tag severity="secondary">
+                <h2>{{ titulo }}</h2>
+            </p-tag>
+            <div>
+                <p-button
+                    icon="pi pi-arrow-left"
+                    severity="info"
+                    rounded="true"
+                    class="ml-0"
+                    [size]="'large'"
+                    routerLink="/mestrices/campanhasList"
+                ></p-button>
+            </div>
+        </div>
+        <p-floatlabel class="mb-3">
+            <input class="col-12" pInputText [(ngModel)]="dto.nome" type="text" name="Título" />
+            <label for="Título">Título</label>
+        </p-floatlabel>
+
+        <textarea
+            placeholder="Descrição"
+            class="col-12"
+            pInputText
+            id="senha"
+            [(ngModel)]="dto.descricao"
+            type="text"
+            name="senha"
+            style="min-height: 22rem; resize: none"
+        >
+        </textarea>
+        <div class="mt-4">
+            <p-button (onClick)="salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+        </div>
+    </p-card>
+</div>

@@ -34,6 +34,9 @@ export class CampanhasList implements OnInit {
     }
 
     criar() {
-        this.router.navigate(['/novo']);
+        this.router.navigate([this.router.url + '/novo']);
+    }
+    editar(a: number) {
+        this.router.navigate([this.router.url + '/' + a]);
     }
 }
