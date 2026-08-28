@@ -1,6 +1,7 @@
 <div class="wrapper">
     <p-card class="card grid">
         <div class="header mb-5">
+            <div></div>
             <p-tag severity="secondary">
                 <h2>{{ titulo }}</h2>
             </p-tag>
@@ -32,7 +33,7 @@
         >
         </textarea>
         <div class="mt-4">
-            <p-button (onClick)="salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+            <p-button (onClick)="id ? salvar() : editar()" [style]="{ width: '8rem' }">Salvar</p-button>
         </div>
     </p-card>
 </div>

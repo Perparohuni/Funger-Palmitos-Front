@@ -21,7 +21,7 @@
 
 .create {
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: space-between;
     margin-right: 5rem;
     margin-bottom: 2rem;
 }

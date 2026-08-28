@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { List } from '../../../components/list/list';
-import { CampanhaDTO } from '../../../dto/campanhaDTO';
 import { CampanhaService } from '../../../services/campanha.service';
 import { ColunaDTO } from '../../../dto/colunaDTO';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GenericList } from '../../../components/generic-list/generic-list';
+import { CampanhaDTO } from '../../../dto/campanhaDTO';
 
 @Component({
     selector: 'app-campanhas-list',
@@ -11,32 +12,21 @@ import { Router } from '@angular/router';
     templateUrl: './campanhas-list.html',
     styleUrl: './campanhas-list.scss',
 })
-export class CampanhasList implements OnInit {
-    campanhas: CampanhaDTO[] = [];
+export class CampanhasList extends GenericList<CampanhaDTO> {
+    titulo = 'Campanhas';
+    override dto: CampanhaDTO[] = [];
     colunas: ColunaDTO[] = [
         { field: 'id', header: 'Id', type: 'string' },
         { field: 'nome', header: 'Nome', type: 'string' },
         { field: 'descricao', header: 'Descrição', type: 'text' },
     ];
+
     constructor(
-        private service: CampanhaService,
-        private cdr: ChangeDetectorRef,
-        private router: Router,
-    ) {}
-
-    ngOnInit() {
-        this.service.getAll().subscribe({
-            next: (dados) => {
-                this.campanhas = dados.content;
-                this.cdr.detectChanges();
-            },
-        });
-    }
-
-    criar() {
-        this.router.navigate([this.router.url + '/novo']);
-    }
-    editar(a: number) {
-        this.router.navigate([this.router.url + '/' + a]);
+        protected override service: CampanhaService,
+        protected override cdr: ChangeDetectorRef,
+        protected override router: Router,
+        protected override route: ActivatedRoute,
+    ) {
+        super(service, cdr, router, route);
     }
 }

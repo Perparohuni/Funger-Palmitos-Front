@@ -4,11 +4,12 @@ import { ButtonModule } from 'primeng/button';
 import { AbstractDTO } from '../../dto/abstractDTO';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
+import { Tag } from 'primeng/tag';
 
 @Component({
     selector: 'app-list',
     standalone: true,
-    imports: [TableModule, ButtonModule, CardModule, DialogModule],
+    imports: [TableModule, ButtonModule, CardModule, DialogModule, Tag],
     templateUrl: './list.html',
     styleUrl: './list.scss',
 })
@@ -20,7 +21,10 @@ export class List<T extends AbstractDTO> {
     colunas: any[] = [];
 
     @Input()
-    totalRecords: number = 0;
+    numeroRegistros: number = 0;
+
+    @Input()
+    titulo?: string;
 
     @Output()
     editar = new EventEmitter<number>();
@@ -32,10 +36,18 @@ export class List<T extends AbstractDTO> {
     criar = new EventEmitter<void>();
 
     texto!: string;
+    idSelecao!: number;
+
     showCardDialog: boolean = false;
+    showDialogExcluir: boolean = false;
 
     onCardClick(texto: string) {
         this.texto = texto;
         this.showCardDialog = !this.showCardDialog;
+    }
+
+    excluirRegistro(id: number) {
+        this.idSelecao = id;
+        this.showDialogExcluir = true;
     }
 }

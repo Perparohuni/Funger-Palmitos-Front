@@ -3,24 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CampanhaDTO } from '../dto/campanhaDTO';
 import { PageDTO } from '../dto/pageDTO';
+import { GenericService } from '../components/generic-service/generic-service';
 
 @Injectable({
     providedIn: 'root',
 })
-export class CampanhaService {
-    private url = 'http://localhost:8081/mestrices/campanhas';
-
-    constructor(private http: HttpClient) {}
-
-    findById(id: number): Observable<CampanhaDTO> {
-        return this.http.get<CampanhaDTO>(this.url + '/' + id);
-    }
-
-    getAll(): Observable<PageDTO<CampanhaDTO>> {
-        return this.http.get<PageDTO<CampanhaDTO>>(this.url);
-    }
-
-    save(dto: CampanhaDTO): Observable<CampanhaDTO> {
-        return this.http.post<CampanhaDTO>(this.url, dto);
+export class CampanhaService extends GenericService<CampanhaDTO> {
+    constructor(protected override http: HttpClient) {
+        super(http, 'campanhas');
     }
 }

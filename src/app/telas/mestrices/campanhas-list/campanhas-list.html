@@ -1,1 +1,9 @@
-<app-list [dados]="campanhas" [colunas]="colunas" (criar)="criar()" (editar)="editar($event)"></app-list>
+<app-list
+    [dados]="dto"
+    [colunas]="colunas"
+    (criar)="criar()"
+    (editar)="editar($event)"
+    (excluir)="excluir($event)"
+    [titulo]="titulo"
+    [numeroRegistros]="registros"
+></app-list>

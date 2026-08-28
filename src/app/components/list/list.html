@@ -1,6 +1,10 @@
 <div class="wrapper">
     <p-card class="card">
         <div class="create">
+            <div></div>
+            <p-tag severity="secondary">
+                <h1>{{ titulo ? titulo : '' }}</h1>
+            </p-tag>
             <p-button icon="pi pi-plus" severity="info" (click)="criar.emit()" rounded [label]="'Novo'"> </p-button>
         </div>
         <p-table
@@ -10,7 +14,9 @@
             [paginator]="true"
             [rows]="5"
             [rowsPerPageOptions]="[5, 10, 20, 50, 100, 500]"
-            [totalRecords]="totalRecords"
+            [totalRecords]="numeroRegistros"
+            [showCurrentPageReport]="true"
+            [currentPageReportTemplate]="'Registros: ' + numeroRegistros"
         >
             <ng-template pTemplate="header">
                 <tr>
@@ -45,7 +51,8 @@
                     <td>
                         <div class="actions">
                             <p-button icon="pi pi-pencil" (click)="editar.emit(linha.id)"> </p-button>
-                            <p-button icon="pi pi-trash" severity="danger" (click)="excluir.emit(linha.id)"> </p-button>
+                            <p-button icon="pi pi-trash" severity="danger" (click)="excluirRegistro(linha.id)">
+                            </p-button>
                         </div>
                     </td>
                 </tr>
@@ -54,4 +61,16 @@
     </p-card>
 </div>
 
-<p-dialog [visible]="showCardDialog"> {{ texto }} </p-dialog>
+<p-dialog [visible]="showCardDialog" (onHide)="showCardDialog = false" [style]="{ width: '50%' }">
+    {{ texto }}
+</p-dialog>
+
+<p-dialog [visible]="showDialogExcluir" (onHide)="showDialogExcluir = false">
+    <ng-template #header> Excluir registro </ng-template>
+    <div>Deseja mesmo excluir este registro?</div>
+    <small>Essa ação não pode ser desfeita</small>
+    <ng-template #footer>
+        <p-button (onClick)="showDialogExcluir = false" severity="secondary">Cancelar</p-button>
+        <p-button (onClick)="excluir.emit(idSelecao); showDialogExcluir = false" severity="danger">Excluir</p-button>
+    </ng-template>
+</p-dialog>
