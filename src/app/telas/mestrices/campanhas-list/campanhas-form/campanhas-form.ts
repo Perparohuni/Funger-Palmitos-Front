@@ -9,6 +9,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TagModule } from 'primeng/tag';
 import { CampanhaService } from '../../../../services/campanha.service';
 import { GenericForm } from '../../../../components/generic-form/generic-form';
+import { ToastService } from '../../../../services/toast.service';
 
 @Component({
     selector: 'app-campanhas-form',
@@ -25,7 +26,8 @@ export class CampanhasForm extends GenericForm<CampanhaDTO> {
         protected override router: Router,
         protected override route: ActivatedRoute,
         protected override cdr: ChangeDetectorRef,
+        protected override toast: ToastService,
     ) {
-        super(service, router, route, cdr);
+        super(service, router, route, cdr, toast);
     }
 }

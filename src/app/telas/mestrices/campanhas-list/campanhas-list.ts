@@ -5,6 +5,7 @@ import { ColunaDTO } from '../../../dto/colunaDTO';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenericList } from '../../../components/generic-list/generic-list';
 import { CampanhaDTO } from '../../../dto/campanhaDTO';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
     selector: 'app-campanhas-list',
@@ -26,7 +27,8 @@ export class CampanhasList extends GenericList<CampanhaDTO> {
         protected override cdr: ChangeDetectorRef,
         protected override router: Router,
         protected override route: ActivatedRoute,
+        protected override toast: ToastService,
     ) {
-        super(service, cdr, router, route);
+        super(service, cdr, router, route, toast);
     }
 }

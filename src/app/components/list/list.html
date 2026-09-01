@@ -8,6 +8,7 @@
             <p-button icon="pi pi-plus" severity="info" (click)="criar.emit()" rounded [label]="'Novo'"> </p-button>
         </div>
         <p-table
+            [style]="{ border: '2px solid black' }"
             [value]="dados"
             showGridlines
             stripedRows
@@ -62,7 +63,10 @@
 </div>
 
 <p-dialog [visible]="showCardDialog" (onHide)="showCardDialog = false" [style]="{ width: '50%' }">
-    {{ texto }}
+    <ng-template #header> Informações </ng-template>
+    <ng-template #content>
+        {{ texto }}
+    </ng-template>
 </p-dialog>
 
 <p-dialog [visible]="showDialogExcluir" (onHide)="showDialogExcluir = false">

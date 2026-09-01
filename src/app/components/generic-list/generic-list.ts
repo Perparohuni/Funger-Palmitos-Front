@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, Directive } from '@angular/core';
 import { AbstractDTO } from '../../dto/abstractDTO';
 import { GenericService } from '../generic-service/generic-service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../../services/toast.service';
 
 @Directive()
 export abstract class GenericList<DTO extends AbstractDTO> {
@@ -13,6 +14,7 @@ export abstract class GenericList<DTO extends AbstractDTO> {
         protected cdr: ChangeDetectorRef,
         protected router: Router,
         protected route: ActivatedRoute,
+        protected toast: ToastService,
     ) {}
 
     ngOnInit() {
@@ -39,6 +41,7 @@ export abstract class GenericList<DTO extends AbstractDTO> {
     excluir(id: number) {
         this.service.delete(id).subscribe({
             next: () => {
+                this.toast.aviso('Excluído com sucesso!');
                 this.carregarLista();
             },
         });

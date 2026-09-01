@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Directive } from '@angular/core';
 import { AbstractDTO } from '../../dto/abstractDTO';
 import { GenericService } from '../generic-service/generic-service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../../services/toast.service';
 
 @Directive()
 export abstract class GenericForm<DTO extends AbstractDTO> {
@@ -13,6 +14,7 @@ export abstract class GenericForm<DTO extends AbstractDTO> {
         protected router: Router,
         protected route: ActivatedRoute,
         protected cdr: ChangeDetectorRef,
+        protected toast: ToastService,
     ) {
         this.id = route.snapshot.paramMap.get('id');
     }
@@ -31,12 +33,14 @@ export abstract class GenericForm<DTO extends AbstractDTO> {
     salvar() {
         this.service.save(this.dto).subscribe({
             next: (data) => {
+                this.toast.sucesso('Criado com sucesso!');
                 this.router.navigate(['../', data.id], { relativeTo: this.route });
             },
         });
     }
 
     editar() {
+        this.toast.sucesso('Editado com sucesso!');
         this.service.update(this.dto).subscribe({});
     }
 
