@@ -10,10 +10,23 @@ import { TagModule } from 'primeng/tag';
 import { CampanhaService } from '../../../../services/campanha.service';
 import { GenericForm } from '../../../../components/generic-form/generic-form';
 import { ToastService } from '../../../../services/toast.service';
+import { Checkbox } from 'primeng/checkbox';
+import { TableModule } from 'primeng/table';
 
 @Component({
     selector: 'app-campanhas-form',
-    imports: [Card, TagModule, FormsModule, InputText, InputTextModule, FloatLabelModule, Button, RouterLink],
+    imports: [
+        Card,
+        TagModule,
+        FormsModule,
+        InputText,
+        InputTextModule,
+        FloatLabelModule,
+        Button,
+        RouterLink,
+        Checkbox,
+        TableModule,
+    ],
     templateUrl: './campanhas-form.html',
     styleUrl: './campanhas-form.scss',
 })

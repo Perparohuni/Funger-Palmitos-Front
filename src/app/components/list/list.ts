@@ -5,11 +5,13 @@ import { AbstractDTO } from '../../dto/abstractDTO';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
 import { Tag } from 'primeng/tag';
+import { Checkbox } from 'primeng/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-list',
     standalone: true,
-    imports: [TableModule, ButtonModule, CardModule, DialogModule, Tag],
+    imports: [TableModule, ButtonModule, CardModule, DialogModule, Tag, Checkbox, FormsModule],
     templateUrl: './list.html',
     styleUrl: './list.scss',
 })

@@ -17,17 +17,19 @@ form {
     height: 53rem;
 }
 
-.trevos{
+.logo-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
+    z-index: 2;
 }
 
 img {
+    transform: translateY(-20%);
     width: 10rem;
 }
 
-input{
+input {
     font-size: 2rem;
     width: 25rem;
 }

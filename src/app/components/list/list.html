@@ -37,6 +37,12 @@
                                 {{ linha[coluna.field] }}
                             </td>
                         }
+                        @if (coluna.type === 'boolean') {
+                            <td>
+                                <p-check-box [disabled]="false" [ngModel]="linha[coluna.field]"></p-check-box>
+                                <p>{{ linha[coluna.field] }}</p>
+                            </td>
+                        }
                         @if (coluna.type === 'text') {
                             <td>
                                 <div (click)="onCardClick(linha[coluna.field])" style="cursor: pointer">

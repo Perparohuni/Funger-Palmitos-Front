@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <p-card class="card grid">
+    <p-card class="card">
         <div class="header mb-5">
             <div></div>
             <p-tag severity="secondary">
@@ -16,24 +16,31 @@
                 ></p-button>
             </div>
         </div>
-        <p-floatlabel class="mb-3">
-            <input class="col-12" pInputText [(ngModel)]="dto.nome" type="text" name="Título" />
-            <label for="Título">Título</label>
-        </p-floatlabel>
-
-        <textarea
-            placeholder="Descrição"
-            class="col-12"
-            pInputText
-            id="senha"
-            [(ngModel)]="dto.descricao"
-            type="text"
-            name="senha"
-            style="min-height: 22rem; resize: none"
-        >
-        </textarea>
-        <div class="mt-4">
-            <p-button (onClick)="id ? editar() : salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+        <div class="grid">
+            <p-floatlabel class="mb-3 col-10">
+                <input class="w-full" pInputText [(ngModel)]="dto.nome" type="text" name="Título" />
+                <label for="Título">Título</label>
+            </p-floatlabel>
+            <div class="col-2">
+                <p-check-box class="mt-1" [inputId]="'ativo'" [(ngModel)]="dto.ativo" [binary]="true"></p-check-box>
+                <label for="ativo" style="font-size: 1.5rem" class="ml-2">Ativo</label>
+            </div>
+            <div class="col-12">
+                <textarea
+                    class="w-full"
+                    placeholder="Descrição"
+                    pInputText
+                    id="senha"
+                    [(ngModel)]="dto.descricao"
+                    type="text"
+                    name="senha"
+                    style="min-height: 22rem; resize: none"
+                >
+                </textarea>
+            </div>
+            <div class="mt-4">
+                <p-button (onClick)="id ? editar() : salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+            </div>
         </div>
     </p-card>
 </div>

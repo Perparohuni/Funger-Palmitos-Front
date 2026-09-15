@@ -20,6 +20,7 @@ export class CampanhasList extends GenericList<CampanhaDTO> {
         { field: 'id', header: 'Id', type: 'string' },
         { field: 'nome', header: 'Nome', type: 'string' },
         { field: 'descricao', header: 'Descrição', type: 'text' },
+        { field: 'ativo', header: 'Ativo', type: 'boolean' },
     ];
 
     constructor(
