@@ -12,6 +12,7 @@ import { GenericForm } from '../../../../components/generic-form/generic-form';
 import { ToastService } from '../../../../services/toast.service';
 import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
+import { SistemaDTO } from '../../../../dto/sistemaDTO';
 
 @Component({
     selector: 'app-campanhas-form',
@@ -23,7 +24,6 @@ import { TableModule } from 'primeng/table';
         InputTextModule,
         FloatLabelModule,
         Button,
-        RouterLink,
         Checkbox,
         TableModule,
     ],
@@ -42,5 +42,9 @@ export class CampanhasForm extends GenericForm<CampanhaDTO> {
         protected override toast: ToastService,
     ) {
         super(service, router, route, cdr, toast);
+        if (!this.id) {
+            this.dto.sistema = new SistemaDTO();
+            this.dto.sistema.id = parseInt(localStorage.getItem('sistema')!);
+        }
     }
 }

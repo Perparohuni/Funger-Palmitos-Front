@@ -1,0 +1,41 @@
+.titulo {
+    border: 2px solid black;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.create {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5rem;
+    margin-bottom: 2rem;
+}
+
+.cards {
+    display: flex;
+    gap: 3rem;
+    padding: 0rem 5rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: var(--fundo);
+    border: 3px solid black;
+    border-radius: 15px;
+    box-shadow: 1px 12px 10px black;
+}
+.card:hover {
+    transform: scale(1.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: end;
+}

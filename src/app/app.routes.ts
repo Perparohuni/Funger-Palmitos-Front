@@ -8,6 +8,8 @@ import { mestreGuard } from './guards/mestre-guard';
 import { Perdido } from './rota-errada/perdido/perdido';
 import { Trapaceiro } from './rota-errada/trapaceiro/trapaceiro';
 import { CampanhasForm } from './telas/mestrices/campanhas-list/campanhas-form/campanhas-form';
+import { SistemasList } from './telas/mestrices/sistemas-list/sistemas-list';
+import { SistemasForm } from './telas/mestrices/sistemas-list/sistemas-form/sistemas-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -20,17 +22,22 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'dashboardMestre',
+                redirectTo: 'sistemas-list',
                 pathMatch: 'full',
             },
-            {
-                path: 'dashboardMestre',
-                component: DashboardMestre,
-            },
+            { path: 'sistemas-list', component: SistemasList },
+            { path: 'sistemas-list/novo', component: SistemasForm },
+            { path: 'sistemas-list/:id', component: SistemasForm },
 
-            { path: 'campanhasList', component: CampanhasList },
-            { path: 'campanhasList/novo', component: CampanhasForm },
-            { path: 'campanhasList/:id', component: CampanhasForm },
+            {
+                path: ':sistema',
+                component: DashboardMestre,
+                children: [
+                    { path: 'campanhasList', component: CampanhasList },
+                    { path: 'campanhasList/novo', component: CampanhasForm },
+                    { path: 'campanhasList/:id', component: CampanhasForm },
+                ],
+            },
         ],
     },
 

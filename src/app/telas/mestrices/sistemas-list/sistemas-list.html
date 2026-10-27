@@ -1,0 +1,12 @@
+<app-card-list
+    [cards]="dto"
+    [elementos]="elementos"
+    [titulo]="titulo"
+    [numeroRegistros]="registros"
+    [width]="'18rem'"
+    [clicavel]="true"
+    (criar)="criar()"
+    (editar)="editar($event)"
+    (excluir)="excluir($event)"
+    (cardClick)="onCardClick($event)"
+></app-card-list>

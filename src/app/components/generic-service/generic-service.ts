@@ -21,6 +21,10 @@ export abstract class GenericService<DTO extends AbstractDTO> {
         return this.http.get<PageDTO<DTO>>(this.endpoint);
     }
 
+    getAllFromSistema(idSistema: number): Observable<PageDTO<DTO>> {
+        return this.http.get<PageDTO<DTO>>(this.endpoint + '/' + 'sistema' + '/' + idSistema);
+    }
+
     save(dto: DTO): Observable<DTO> {
         return this.http.post<DTO>(this.endpoint, dto);
     }

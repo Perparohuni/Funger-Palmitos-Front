@@ -1,0 +1,67 @@
+<div class="wrapper">
+    <div class="create">
+        <div></div>
+        <p-tag class="titulo" severity="secondary">
+            <h1>{{ titulo ? titulo : '' }}</h1>
+        </p-tag>
+        <p-button icon="pi pi-plus" severity="info" (click)="criar.emit()" rounded [label]="'Novo'"> </p-button>
+    </div>
+    <div class="cards">
+        @for (card of cards; track card.id) {
+            <p-card
+                [className]="'card'"
+                [style]="{ height: height ? height : '', width: width ? width : '', cursor: clicavel ? 'pointer' : '' }"
+                (click)="onClick(card.id!); $event.stopPropagation()"
+            >
+                <ng-template #header class="card-header">
+                    @for (elemento of elementos; track elemento.field) {
+                        @if (elemento.type === 'titulo') {
+                            <h2 class="titulo-card">{{ card[elemento.field] }}</h2>
+                        }
+                        @if (elemento.type === 'sub-titulo') {
+                            <h3>{{ elemento.header }}: {{ card[elemento.field] }}</h3>
+                        }
+                        @if (elemento.type === 'extra-titulo') {
+                            <p>{{ elemento.header }}: {{ card[elemento.field] }}</p>
+                        }
+                    }
+                </ng-template>
+                <ng-template #body>
+                    @for (elemento of elementos; track elemento.field) {
+                        @if (elemento.type === 'string') {
+                            <p>{{ elemento.header }}: {{ card[elemento.field] }}</p>
+                        }
+                    }
+                </ng-template>
+                <ng-template #footer>
+                    <div class="footer">
+                        <p-button icon="pi pi-pencil" severity="help" (click)="editar.emit(card.id)"> </p-button>
+                        <p-button
+                            icon="pi pi-trash"
+                            severity="danger"
+                            (click)="excluirRegistro(card.id!); $event.stopPropagation()"
+                        >
+                        </p-button>
+                    </div>
+                </ng-template>
+            </p-card>
+        }
+    </div>
+</div>
+
+<p-dialog [visible]="showCardDialog" (onHide)="showCardDialog = false" [style]="{ width: '50%' }">
+    <ng-template #header> Informações </ng-template>
+    <ng-template #content>
+        {{ texto }}
+    </ng-template>
+</p-dialog>
+
+<p-dialog [visible]="showDialogExcluir" (onHide)="showDialogExcluir = false">
+    <ng-template #header> Excluir registro </ng-template>
+    <div>Deseja mesmo excluir este registro?</div>
+    <small>Essa ação não pode ser desfeita</small>
+    <ng-template #footer>
+        <p-button (onClick)="showDialogExcluir = false" severity="secondary">Cancelar</p-button>
+        <p-button (onClick)="excluir.emit(idSelecao); showDialogExcluir = false" severity="danger">Excluir</p-button>
+    </ng-template>
+</p-dialog>

@@ -1,10 +1,10 @@
-<div class="page-wrapper">
-    <div class="page">
-        <nav>
-            <a pButton routerLink="dashboardMestre">Dashboard</a>
-            <a pButton routerLink="/login" (click)="limparCache()">Logout</a>
-        </nav>
-        <router-outlet></router-outlet>
-    </div>
-</div>
-
+<app-globall-wrapper>
+    <ng-container header class="header-wrapper">
+        <a pButton routerLink="sistemas-list" (click)="removerIdSistema()">Sistemas</a>
+        @if (sistemaId) {
+            <a pButton routerLink="{{ sistemaId }}">Dashboard</a>
+        }
+        <a pButton routerLink="/login" (click)="limparCache()">Logout</a>
+    </ng-container>
+    <div body><router-outlet></router-outlet></div>
+</app-globall-wrapper>

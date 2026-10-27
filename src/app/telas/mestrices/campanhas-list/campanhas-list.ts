@@ -30,6 +30,6 @@ export class CampanhasList extends GenericList<CampanhaDTO> {
         protected override route: ActivatedRoute,
         protected override toast: ToastService,
     ) {
-        super(service, cdr, router, route, toast);
+        super(service, cdr, router, route, toast, true);
     }
 }

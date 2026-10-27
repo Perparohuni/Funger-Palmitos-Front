@@ -18,8 +18,6 @@ import { ToastService } from '../../services/toast.service';
 export class Login {
     login: string = '';
     senha: string = '';
-    aviso = false;
-    avisos!: string;
 
     private readonly destroyRef = inject(DestroyRef);
 
@@ -48,14 +46,12 @@ export class Login {
                     localStorage.setItem('token', res.dados.token);
                     localStorage.setItem('login', res.dados.login);
                     localStorage.setItem('mestre', res.dados.mestre);
-                    this.aviso = false;
                     if (mestre) {
                         this.toast.sucesso('Mestre logado com sucesso!');
-                        this.router.navigate(['/mestrices']);
                     } else {
                         this.toast.sucesso('Jogador logado com sucesso!');
-                        this.router.navigate(['/campanhas']);
                     }
+                    this.router.navigate(['/mestrices']);
                 },
             });
     }

@@ -1,13 +1,17 @@
-import { ChangeDetectorRef, Component, Directive } from '@angular/core';
+import { ChangeDetectorRef, DestroyRef, Directive, inject } from '@angular/core';
 import { AbstractDTO } from '../../dto/abstractDTO';
 import { GenericService } from '../generic-service/generic-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../services/toast.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Directive()
 export abstract class GenericList<DTO extends AbstractDTO> {
     protected registros: number = 0;
+    protected sistemaId?: string | null;
     abstract dto: DTO[];
+
+    private readonly destroyRef = inject(DestroyRef);
 
     constructor(
         protected service: GenericService<DTO>,
@@ -15,13 +19,43 @@ export abstract class GenericList<DTO extends AbstractDTO> {
         protected router: Router,
         protected route: ActivatedRoute,
         protected toast: ToastService,
+        protected doSistema: boolean,
     ) {}
 
     ngOnInit() {
-        this.carregarLista();
+        if (this.service) {
+            this.load();
+        }
     }
 
-    carregarLista() {
+    load() {
+        if (this.doSistema) {
+            this.carregarListaSistema();
+        } else {
+            this.carregarListaInteira();
+        }
+    }
+
+    carregarListaSistema() {
+        const sistemaId = localStorage.getItem('sistema');
+        if (!sistemaId) {
+            this.toast.erro('Sistema não encontrado');
+            this.router.navigate(['../../'], { relativeTo: this.route });
+        } else {
+            this.service
+                .getAllFromSistema(parseInt(sistemaId))
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe({
+                    next: (dados) => {
+                        this.dto = dados.content;
+                        this.registros = dados.totalElements;
+                        this.cdr.detectChanges();
+                    },
+                });
+        }
+    }
+
+    carregarListaInteira() {
         this.service.getAll().subscribe({
             next: (dados) => {
                 this.dto = dados.content;
@@ -42,7 +76,7 @@ export abstract class GenericList<DTO extends AbstractDTO> {
         this.service.delete(id).subscribe({
             next: () => {
                 this.toast.aviso('Excluído com sucesso!');
-                this.carregarLista();
+                this.load();
             },
         });
     }
