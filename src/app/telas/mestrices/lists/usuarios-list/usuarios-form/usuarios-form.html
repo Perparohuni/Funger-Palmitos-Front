@@ -1,0 +1,37 @@
+<div class="wrapper">
+    <p-card class="card">
+        <div class="header mb-5">
+            <div></div>
+            <p-tag severity="secondary">
+                <h2>{{ titulo }}</h2>
+            </p-tag>
+            <div>
+                <p-button
+                    icon="pi pi-arrow-left"
+                    severity="info"
+                    rounded="true"
+                    class="ml-0"
+                    [size]="'large'"
+                    (onClick)="goList()"
+                ></p-button>
+            </div>
+        </div>
+        <div class="grid">
+            <p-floatlabel class="mb-3 col-6">
+                <input class="w-full" pInputText [(ngModel)]="dto.login" type="text" name="login" />
+                <label for="login">Login</label>
+            </p-floatlabel>
+            <p-floatlabel class="mb-3 col-4">
+                <input class="w-full" pInputText [(ngModel)]="dto.senha" type="text" name="senha" />
+                <label for="senha">Senha</label>
+            </p-floatlabel>
+            <div class="col-2">
+                <p-check-box class="mt-1" [inputId]="'mestre'" [(ngModel)]="dto.mestre" [binary]="true"></p-check-box>
+                <label for="mestre" style="font-size: 1.5rem" class="ml-2">Mestre</label>
+            </div>
+            <div class="mt-4">
+                <p-button (onClick)="id ? editar() : salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+            </div>
+        </div>
+    </p-card>
+</div>

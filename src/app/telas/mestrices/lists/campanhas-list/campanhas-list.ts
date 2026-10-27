@@ -1,12 +1,11 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { List } from '../../../components/list/list';
-import { CampanhaService } from '../../../services/campanha.service';
-import { ColunaDTO } from '../../../dto/colunaDTO';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GenericList } from '../../../components/generic-list/generic-list';
-import { CampanhaDTO } from '../../../dto/campanhaDTO';
-import { ToastService } from '../../../services/toast.service';
-
+import { List } from '../../../../components/list/list';
+import { GenericList } from '../../../../components/generic-list/generic-list';
+import { CampanhaDTO } from '../../../../dto/campanhaDTO';
+import { ColunaDTO } from '../../../../dto/colunaDTO';
+import { CampanhaService } from '../../../../services/campanha.service';
+import { ToastService } from '../../../../services/toast.service';
 @Component({
     selector: 'app-campanhas-list',
     imports: [List],

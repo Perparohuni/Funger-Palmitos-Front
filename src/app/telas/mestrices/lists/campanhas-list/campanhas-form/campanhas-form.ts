@@ -1,18 +1,18 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Card } from 'primeng/card';
-import { CampanhaDTO } from '../../../../dto/campanhaDTO';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputText, InputTextModule } from 'primeng/inputtext';
 import { Button } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TagModule } from 'primeng/tag';
-import { CampanhaService } from '../../../../services/campanha.service';
-import { GenericForm } from '../../../../components/generic-form/generic-form';
-import { ToastService } from '../../../../services/toast.service';
 import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
-import { SistemaDTO } from '../../../../dto/sistemaDTO';
+import { GenericForm } from '../../../../../components/generic-form/generic-form';
+import { CampanhaDTO } from '../../../../../dto/campanhaDTO';
+import { CampanhaService } from '../../../../../services/campanha.service';
+import { ToastService } from '../../../../../services/toast.service';
+import { SistemaDTO } from '../../../../../dto/sistemaDTO';
 
 @Component({
     selector: 'app-campanhas-form',

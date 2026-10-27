@@ -4,6 +4,7 @@
         @if (sistemaId) {
             <a pButton routerLink="{{ sistemaId }}">Dashboard</a>
         }
+        <a pButton routerLink="usuarios-list">Usuários</a>
         <a pButton routerLink="/login" (click)="limparCache()">Logout</a>
     </ng-container>
     <div body><router-outlet></router-outlet></div>

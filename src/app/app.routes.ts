@@ -2,14 +2,16 @@ import { Routes } from '@angular/router';
 import { Login } from './telas/login/login';
 import { DashboardMestre } from './telas/mestrices/dashboard-mestre/dashboard-mestre';
 import { Campanhas } from './telas/campanhas/campanhas';
-import { CampanhasList } from './telas/mestrices/campanhas-list/campanhas-list';
 import { Mestrices } from './telas/mestrices/mestrices';
 import { mestreGuard } from './guards/mestre-guard';
 import { Perdido } from './rota-errada/perdido/perdido';
 import { Trapaceiro } from './rota-errada/trapaceiro/trapaceiro';
-import { CampanhasForm } from './telas/mestrices/campanhas-list/campanhas-form/campanhas-form';
-import { SistemasList } from './telas/mestrices/sistemas-list/sistemas-list';
-import { SistemasForm } from './telas/mestrices/sistemas-list/sistemas-form/sistemas-form';
+import { SistemasList } from './telas/mestrices/lists/sistemas-list/sistemas-list';
+import { SistemasForm } from './telas/mestrices/lists/sistemas-list/sistemas-form/sistemas-form';
+import { CampanhasList } from './telas/mestrices/lists/campanhas-list/campanhas-list';
+import { CampanhasForm } from './telas/mestrices/lists/campanhas-list/campanhas-form/campanhas-form';
+import { UsuariosList } from './telas/mestrices/lists/usuarios-list/usuarios-list';
+import { UsuariosForm } from './telas/mestrices/lists/usuarios-list/usuarios-form/usuarios-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -25,9 +27,14 @@ export const routes: Routes = [
                 redirectTo: 'sistemas-list',
                 pathMatch: 'full',
             },
+
             { path: 'sistemas-list', component: SistemasList },
             { path: 'sistemas-list/novo', component: SistemasForm },
             { path: 'sistemas-list/:id', component: SistemasForm },
+
+            { path: 'usuarios-list', component: UsuariosList },
+            { path: 'usuarios-list/novo', component: UsuariosForm },
+            { path: 'usuarios-list/:id', component: UsuariosForm },
 
             {
                 path: ':sistema',

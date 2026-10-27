@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { GenericList } from '../../../components/generic-list/generic-list';
-import { SistemaDTO } from '../../../dto/sistemaDTO';
-import { CardDTO } from '../../../dto/cardDTO';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastService } from '../../../services/toast.service';
-import { SistemaService } from '../../../services/sistema.service';
-import { CardList } from '../../../components/card-list/card-list';
+import { CardList } from '../../../../components/card-list/card-list';
+import { GenericList } from '../../../../components/generic-list/generic-list';
+import { SistemaDTO } from '../../../../dto/sistemaDTO';
+import { SistemaService } from '../../../../services/sistema.service';
+import { ToastService } from '../../../../services/toast.service';
+import { CardDTO } from '../../../../dto/cardDTO';
 
 @Component({
     selector: 'app-sistemas-list',

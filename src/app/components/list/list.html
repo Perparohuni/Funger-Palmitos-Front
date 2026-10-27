@@ -39,8 +39,11 @@
                         }
                         @if (coluna.type === 'boolean') {
                             <td>
-                                <p-check-box [disabled]="false" [ngModel]="linha[coluna.field]"></p-check-box>
-                                <p>{{ linha[coluna.field] }}</p>
+                                <p-check-box
+                                    [disabled]="true"
+                                    [binary]="true"
+                                    [ngModel]="linha[coluna.field]"
+                                ></p-check-box>
                             </td>
                         }
                         @if (coluna.type === 'text') {

@@ -6,12 +6,12 @@ import { Button } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TagModule } from 'primeng/tag';
-import { GenericForm } from '../../../../components/generic-form/generic-form';
-import { ToastService } from '../../../../services/toast.service';
 import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
-import { SistemaDTO } from '../../../../dto/sistemaDTO';
-import { SistemaService } from '../../../../services/sistema.service';
+import { GenericForm } from '../../../../../components/generic-form/generic-form';
+import { SistemaDTO } from '../../../../../dto/sistemaDTO';
+import { SistemaService } from '../../../../../services/sistema.service';
+import { ToastService } from '../../../../../services/toast.service';
 
 @Component({
     selector: 'app-campanhas-form',
