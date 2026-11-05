@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <p-card class="card">
+        <div class="header mb-5">
+            <div></div>
+            <p-tag severity="secondary">
+                <h2>{{ titulo }}</h2>
+            </p-tag>
+            <div>
+                <p-button
+                    icon="pi pi-arrow-left"
+                    severity="info"
+                    rounded="true"
+                    class="ml-0"
+                    [size]="'large'"
+                    (onClick)="goList()"
+                ></p-button>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <p-autocomplete
+                    [fluid]="true"
+                    [dropdown]="true"
+                    [(ngModel)]="dto.usuario"
+                    [suggestions]="usuariosFiltrados"
+                    [optionLabel]="'login'"
+                    placeholder="Digite o nome de um usuário"
+                    [completeOnFocus]="true"
+                    [dropdownMode]="'blank'"
+                    (completeMethod)="buscarUsuarios($event)"
+                ></p-autocomplete>
+            </div>
+
+            <div class="mt-4">
+                <p-button (onClick)="id ? editar() : salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+            </div>
+        </div>
+    </p-card>
+</div>

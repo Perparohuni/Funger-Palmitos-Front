@@ -6,6 +6,7 @@ import { ColunaDTO } from '../../../../dto/colunaDTO';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../../../services/toast.service';
+import { EnumTipoService } from '../../../../enum/enum-tipo-service';
 
 @Component({
     selector: 'app-usuarios-list',
@@ -29,6 +30,6 @@ export class UsuariosList extends GenericList<UsuarioDTO> {
         protected override route: ActivatedRoute,
         protected override toast: ToastService,
     ) {
-        super(service, cdr, router, route, toast, false);
+        super(service, cdr, router, route, toast, EnumTipoService.GENERICO);
     }
 }

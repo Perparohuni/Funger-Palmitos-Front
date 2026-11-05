@@ -12,6 +12,8 @@ import { CampanhasList } from './telas/mestrices/lists/campanhas-list/campanhas-
 import { CampanhasForm } from './telas/mestrices/lists/campanhas-list/campanhas-form/campanhas-form';
 import { UsuariosList } from './telas/mestrices/lists/usuarios-list/usuarios-list';
 import { UsuariosForm } from './telas/mestrices/lists/usuarios-list/usuarios-form/usuarios-form';
+import { CampanhasUsuariosList } from './telas/mestrices/lists/campanhas-list/campanhas-usuarios-list/campanhas-usuarios-list';
+import { CampanhasUsuariosForm } from './telas/mestrices/lists/campanhas-list/campanhas-usuarios-list/campanhas-usuarios-form/campanhas-usuarios-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -43,6 +45,9 @@ export const routes: Routes = [
                     { path: 'campanhasList', component: CampanhasList },
                     { path: 'campanhasList/novo', component: CampanhasForm },
                     { path: 'campanhasList/:id', component: CampanhasForm },
+                    { path: 'campanhasList/:campanhaId/usuarios', component: CampanhasUsuariosList },
+                    { path: 'campanhasList/:campanhaId/usuarios/novo', component: CampanhasUsuariosForm },
+                    { path: 'campanhasList/:campanhaId/usuarios/:usuarioCampanhaId', component: CampanhasUsuariosForm },
                 ],
             },
         ],

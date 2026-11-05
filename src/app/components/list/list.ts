@@ -7,6 +7,7 @@ import { DialogModule } from 'primeng/dialog';
 import { Tag } from 'primeng/tag';
 import { Checkbox } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
+import { BotaoExtraDTO } from '../../dto/botao-extraDTO';
 
 @Component({
     selector: 'app-list',
@@ -27,6 +28,12 @@ export class List<T extends AbstractDTO> {
 
     @Input()
     titulo?: string;
+
+    @Input()
+    botoesExtras?: BotaoExtraDTO<T>[];
+
+    @Input()
+    botoesCabecalhoExtras?: BotaoExtraDTO<T>[];
 
     @Output()
     editar = new EventEmitter<number>();
@@ -51,5 +58,9 @@ export class List<T extends AbstractDTO> {
     excluirRegistro(id: number) {
         this.idSelecao = id;
         this.showDialogExcluir = true;
+    }
+
+    obterValor(objeto: any, field: string): any {
+        return field.split('.').reduce((valor, propriedade) => valor?.[propriedade], objeto);
     }
 }

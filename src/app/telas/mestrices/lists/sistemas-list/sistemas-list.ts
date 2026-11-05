@@ -6,6 +6,7 @@ import { SistemaDTO } from '../../../../dto/sistemaDTO';
 import { SistemaService } from '../../../../services/sistema.service';
 import { ToastService } from '../../../../services/toast.service';
 import { CardDTO } from '../../../../dto/cardDTO';
+import { EnumTipoService } from '../../../../enum/enum-tipo-service';
 
 @Component({
     selector: 'app-sistemas-list',
@@ -25,7 +26,7 @@ export class SistemasList extends GenericList<SistemaDTO> {
         protected override route: ActivatedRoute,
         protected override toast: ToastService,
     ) {
-        super(service, cdr, router, route, toast, false);
+        super(service, cdr, router, route, toast, EnumTipoService.GENERICO);
     }
 
     onCardClick(sistemaId: number) {

@@ -10,7 +10,7 @@ export abstract class GenericForm<DTO extends AbstractDTO> {
     dto!: DTO;
     id: string | null;
 
-    private readonly destroyRef = inject(DestroyRef);
+    protected readonly destroyRef = inject(DestroyRef);
 
     constructor(
         protected service: GenericService<DTO>,

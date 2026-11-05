@@ -9,10 +9,10 @@ import { TagModule } from 'primeng/tag';
 import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
 import { GenericForm } from '../../../../../components/generic-form/generic-form';
-import { CampanhaDTO } from '../../../../../dto/campanhaDTO';
 import { CampanhaService } from '../../../../../services/campanha.service';
 import { ToastService } from '../../../../../services/toast.service';
 import { SistemaDTO } from '../../../../../dto/sistemaDTO';
+import { CampanhasDTO } from '../../../../../dto/campanhasDTO';
 
 @Component({
     selector: 'app-campanhas-form',
@@ -30,8 +30,8 @@ import { SistemaDTO } from '../../../../../dto/sistemaDTO';
     templateUrl: './campanhas-form.html',
     styleUrl: './campanhas-form.scss',
 })
-export class CampanhasForm extends GenericForm<CampanhaDTO> {
-    override dto: CampanhaDTO = new CampanhaDTO();
+export class CampanhasForm extends GenericForm<CampanhasDTO> {
+    override dto: CampanhasDTO = new CampanhasDTO();
     titulo = 'Campanhas';
 
     constructor(

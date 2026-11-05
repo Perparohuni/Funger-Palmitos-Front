@@ -4,14 +4,14 @@ import { GenericService } from '../generic-service/generic-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../services/toast.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { EnumTipoService } from '../../enum/enum-tipo-service';
 
 @Directive()
 export abstract class GenericList<DTO extends AbstractDTO> {
     protected registros: number = 0;
-    protected sistemaId?: string | null;
     abstract dto: DTO[];
 
-    private readonly destroyRef = inject(DestroyRef);
+    protected readonly destroyRef = inject(DestroyRef);
 
     constructor(
         protected service: GenericService<DTO>,
@@ -19,7 +19,7 @@ export abstract class GenericList<DTO extends AbstractDTO> {
         protected router: Router,
         protected route: ActivatedRoute,
         protected toast: ToastService,
-        protected doSistema: boolean,
+        protected tipoService: EnumTipoService,
     ) {}
 
     ngOnInit() {
@@ -29,10 +29,15 @@ export abstract class GenericList<DTO extends AbstractDTO> {
     }
 
     load() {
-        if (this.doSistema) {
-            this.carregarListaSistema();
-        } else {
-            this.carregarListaInteira();
+        switch (this.tipoService) {
+            case EnumTipoService.GENERICO:
+                this.carregarListaInteira();
+                break;
+            case EnumTipoService.SISTEMA:
+                this.carregarListaSistema();
+                break;
+            case EnumTipoService.CAMPANHA:
+                this.carregarListaCampanha();
         }
     }
 
@@ -44,6 +49,24 @@ export abstract class GenericList<DTO extends AbstractDTO> {
         } else {
             this.service
                 .getAllFromSistema(parseInt(sistemaId))
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe({
+                    next: (dados) => {
+                        this.dto = dados.content;
+                        this.registros = dados.totalElements;
+                        this.cdr.detectChanges();
+                    },
+                });
+        }
+    }
+    carregarListaCampanha() {
+        const campanhaId = localStorage.getItem('campanha');
+        if (!campanhaId) {
+            this.toast.erro('Campanha não encontrada');
+            this.router.navigate(['../../'], { relativeTo: this.route });
+        } else {
+            this.service
+                .getAllFromCampanha(parseInt(campanhaId))
                 .pipe(takeUntilDestroyed(this.destroyRef))
                 .subscribe({
                     next: (dados) => {
