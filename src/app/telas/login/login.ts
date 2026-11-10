@@ -48,10 +48,11 @@ export class Login {
                     localStorage.setItem('mestre', res.dados.mestre);
                     if (mestre) {
                         this.toast.sucesso('Mestre logado com sucesso!');
+                        this.router.navigate(['/mestrices']);
                     } else {
                         this.toast.sucesso('Jogador logado com sucesso!');
+                        this.router.navigate(['/aventurices']);
                     }
-                    this.router.navigate(['/mestrices']);
                 },
             });
     }

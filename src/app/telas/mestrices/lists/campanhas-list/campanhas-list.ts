@@ -39,7 +39,7 @@ export class CampanhasList extends GenericList<CampanhasDTO> {
     }
 
     editarUsuarios(id: number) {
-        localStorage.setItem('campanha', String(id));
+        localStorage.setItem('campanha-mestre', String(id));
         this.router.navigate([id + '/usuarios'], { relativeTo: this.route });
     }
 }

@@ -3,14 +3,21 @@ import { AbstractDTO } from '../../dto/abstractDTO';
 import { Observable } from 'rxjs';
 import { PageDTO } from '../../dto/pageDTO';
 import { environment } from '../../../environment/environment';
+import { inject } from '@angular/core';
+import { UsuarioUtils } from '../../utils/usuario-utils';
 export abstract class GenericService<DTO extends AbstractDTO> {
     protected readonly endpoint: string;
+    protected usuarioUtils: UsuarioUtils = inject(UsuarioUtils);
 
     constructor(
         protected http: HttpClient,
         rota: string,
     ) {
-        this.endpoint = environment.urlMestrices + '/' + rota;
+        if (this.usuarioUtils.ehMestre()) {
+            this.endpoint = environment.urlMestrices + '/' + rota;
+        } else {
+            this.endpoint = environment.urlAventurices + '/' + rota;
+        }
     }
 
     findById(id: number): Observable<DTO> {

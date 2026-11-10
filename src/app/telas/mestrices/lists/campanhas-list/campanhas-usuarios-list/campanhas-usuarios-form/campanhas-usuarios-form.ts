@@ -46,7 +46,7 @@ export class CampanhasUsuariosForm extends GenericForm<UsuarioCampanhaDTO> {
 
     override ngOnInit(): void {
         this.campanhaService
-            .findById(parseInt(localStorage.getItem('campanha')!))
+            .findById(parseInt(localStorage.getItem('campanha-mestre')!))
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
                 next: (campanha) => {

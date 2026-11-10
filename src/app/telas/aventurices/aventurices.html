@@ -1,0 +1,11 @@
+<app-globall-wrapper>
+    <ng-container header class="header-wrapper">
+        <a pButton routerLink="/aventurices" (click)="removerCampanhaId()">Campanhas</a>
+        @if (campanhaId) {
+            <a pButton routerLink="{{ campanhaId }}">Dashboard</a>
+        }
+        <a pButton routerLink="personagens-list">Personagens</a>
+        <a pButton routerLink="/login" (click)="limparCache()">Logout</a>
+    </ng-container>
+    <div body><router-outlet></router-outlet></div>
+</app-globall-wrapper>

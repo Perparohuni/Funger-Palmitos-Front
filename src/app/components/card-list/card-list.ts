@@ -30,6 +30,8 @@ export class CardList<T extends AbstractDTO> {
     height?: string;
     @Input()
     clicavel?: boolean;
+    @Input()
+    acoes: string[] = ['criar', 'editar', 'excluir'];
 
     @Output()
     editar = new EventEmitter<number>();

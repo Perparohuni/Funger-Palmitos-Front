@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { Login } from './telas/login/login';
 import { DashboardMestre } from './telas/mestrices/dashboard-mestre/dashboard-mestre';
-import { Campanhas } from './telas/campanhas/campanhas';
 import { Mestrices } from './telas/mestrices/mestrices';
 import { mestreGuard } from './guards/mestre-guard';
 import { Perdido } from './rota-errada/perdido/perdido';
@@ -14,6 +13,8 @@ import { UsuariosList } from './telas/mestrices/lists/usuarios-list/usuarios-lis
 import { UsuariosForm } from './telas/mestrices/lists/usuarios-list/usuarios-form/usuarios-form';
 import { CampanhasUsuariosList } from './telas/mestrices/lists/campanhas-list/campanhas-usuarios-list/campanhas-usuarios-list';
 import { CampanhasUsuariosForm } from './telas/mestrices/lists/campanhas-list/campanhas-usuarios-list/campanhas-usuarios-form/campanhas-usuarios-form';
+import { Aventurices } from './telas/aventurices/aventurices';
+import { CampanhasAventureiroList } from './telas/aventurices/lists/campanhas-aventureiro-list/campanhas-aventureiro-list';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -53,7 +54,19 @@ export const routes: Routes = [
         ],
     },
 
-    { path: 'campanhas', component: Campanhas },
+    {
+        path: 'aventurices',
+        component: Aventurices,
+        children: [
+            {
+                path: '',
+                redirectTo: 'campanhas-aventureiro-list',
+                pathMatch: 'full',
+            },
+
+            { path: 'campanhas-aventureiro-list', component: CampanhasAventureiroList },
+        ],
+    },
 
     { path: 'trapaceiro', component: Trapaceiro },
 
