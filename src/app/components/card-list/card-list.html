@@ -20,23 +20,23 @@
                 <ng-template #header class="card-header">
                     @for (elemento of elementos; track elemento.field) {
                         @if (elemento.type === 'titulo') {
-                            <h2 class="titulo-card">{{ card[elemento.field] }}</h2>
+                            <h2 class="titulo-card">{{ obterValor(card, elemento.field) }}</h2>
                         }
                         @if (elemento.type === 'sub-titulo') {
-                            <h3>{{ elemento.header }}: {{ card[elemento.field] }}</h3>
+                            <h3>{{ elemento.header }}: {{ obterValor(card, elemento.field) }}</h3>
                         }
                         @if (elemento.type === 'extra-titulo') {
-                            <p>{{ elemento.header }}: {{ card[elemento.field] }}</p>
+                            <p>{{ elemento.header }}: {{ obterValor(card, elemento.field) }}</p>
                         }
                     }
                 </ng-template>
-                <ng-template #body>
+                <div>
                     @for (elemento of elementos; track elemento.field) {
                         @if (elemento.type === 'string') {
-                            <p>{{ elemento.header }}: {{ card[elemento.field] }}</p>
+                            <p>{{ elemento.header }}: {{ obterValor(card, elemento.field) }}</p>
                         }
                     }
-                </ng-template>
+                </div>
                 <ng-template #footer>
                     <div class="footer">
                         @if (acoes.includes('editar')) {

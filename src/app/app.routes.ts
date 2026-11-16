@@ -15,6 +15,8 @@ import { CampanhasUsuariosList } from './telas/mestrices/lists/campanhas-list/ca
 import { CampanhasUsuariosForm } from './telas/mestrices/lists/campanhas-list/campanhas-usuarios-list/campanhas-usuarios-form/campanhas-usuarios-form';
 import { Aventurices } from './telas/aventurices/aventurices';
 import { CampanhasAventureiroList } from './telas/aventurices/lists/campanhas-aventureiro-list/campanhas-aventureiro-list';
+import { PersonagensList } from './telas/aventurices/lists/personagens-list/personagens-list';
+import { PersonagensForm } from './telas/aventurices/lists/personagens-list/personagens-form/personagens-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -65,6 +67,10 @@ export const routes: Routes = [
             },
 
             { path: 'campanhas-aventureiro-list', component: CampanhasAventureiroList },
+
+            { path: 'personagens-list', component: PersonagensList },
+            { path: 'personagens-list/novo', component: PersonagensForm },
+            { path: 'personagens-list/:id', component: PersonagensForm },
         ],
     },
 

@@ -60,7 +60,7 @@ export abstract class GenericList<DTO extends AbstractDTO> {
         }
     }
     carregarListaCampanha() {
-        const campanhaId = localStorage.getItem('campanha');
+        const campanhaId = localStorage.getItem('campanha-mestre');
         if (!campanhaId) {
             this.toast.erro('Campanha não encontrada');
             this.router.navigate(['../../'], { relativeTo: this.route });

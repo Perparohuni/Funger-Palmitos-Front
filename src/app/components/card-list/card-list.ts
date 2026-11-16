@@ -51,6 +51,10 @@ export class CardList<T extends AbstractDTO> {
     showCardDialog: boolean = false;
     showDialogExcluir: boolean = false;
 
+    obterValor(objeto: any, field: string): any {
+        return field.split('.').reduce((valor, propriedade) => valor?.[propriedade], objeto);
+    }
+
     onClick(id: number) {
         this.cardClick.emit(id);
     }

@@ -6,7 +6,6 @@ import { ColunaDTO } from '../../../../../dto/colunaDTO';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../../../../services/toast.service';
 import { UsuarioCampanhaService } from '../../../../../services/usuario-campanha.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EnumTipoService } from '../../../../../enum/enum-tipo-service';
 import { BotaoExtraDTO } from '../../../../../dto/botao-extraDTO';
 

@@ -5,22 +5,23 @@
 }
 
 .page {
+    margin-top: 1.5vh;
     background-color: var(--fundoConteudo);
-    height: 53rem;
-    width: 115rem;
-    margin-top: 2rem;
+    height: 97vh;
+    width: 98vw;
     border: 2px solid black;
     box-shadow: -5px 5px 5px;
+    overflow: auto;
+    padding: 2rem;
 }
 
 nav {
     background-color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     justify-self: center;
-    width: 60%;
-    margin-top: 0.42rem;
-    padding: 1.2rem 9rem;
+    width: 70%;
+    padding: 1.2rem 2rem;
     border-radius: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
