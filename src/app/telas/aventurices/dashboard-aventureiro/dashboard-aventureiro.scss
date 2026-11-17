@@ -1,0 +1,19 @@
+.titulo {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 6rem;
+}
+
+.modulos-list {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modulo {
+    padding: 3rem 2rem;
+    font-size: 1.2rem;
+    border: 2px solid black;
+    box-shadow: -5px 5px 5px black;
+}

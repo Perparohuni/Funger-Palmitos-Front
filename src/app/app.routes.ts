@@ -17,6 +17,9 @@ import { Aventurices } from './telas/aventurices/aventurices';
 import { CampanhasAventureiroList } from './telas/aventurices/lists/campanhas-aventureiro-list/campanhas-aventureiro-list';
 import { PersonagensList } from './telas/aventurices/lists/personagens-list/personagens-list';
 import { PersonagensForm } from './telas/aventurices/lists/personagens-list/personagens-form/personagens-form';
+import { DashboardAventureiro } from './telas/aventurices/dashboard-aventureiro/dashboard-aventureiro';
+import { AtributosList } from './telas/mestrices/lists/atributos-list/atributos-list';
+import { AtributosForm } from './telas/mestrices/lists/atributos-list/atributos-form/atributos-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -51,6 +54,10 @@ export const routes: Routes = [
                     { path: 'campanhasList/:campanhaId/usuarios', component: CampanhasUsuariosList },
                     { path: 'campanhasList/:campanhaId/usuarios/novo', component: CampanhasUsuariosForm },
                     { path: 'campanhasList/:campanhaId/usuarios/:usuarioCampanhaId', component: CampanhasUsuariosForm },
+
+                    { path: 'atributos-list', component: AtributosList },
+                    { path: 'atributos-list/novo', component: AtributosForm },
+                    { path: 'atributos-list/:id', component: AtributosForm },
                 ],
             },
         ],
@@ -71,6 +78,12 @@ export const routes: Routes = [
             { path: 'personagens-list', component: PersonagensList },
             { path: 'personagens-list/novo', component: PersonagensForm },
             { path: 'personagens-list/:id', component: PersonagensForm },
+
+            {
+                path: ':campanha-aventureiro',
+                component: DashboardAventureiro,
+                children: [],
+            },
         ],
     },
 
