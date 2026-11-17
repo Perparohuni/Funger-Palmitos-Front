@@ -3,8 +3,6 @@ import { List } from '../../../../components/list/list';
 import { GenericList } from '../../../../components/generic-list/generic-list';
 import { AtributoDTO } from '../../../../dto/atributoDTO';
 import { ColunaDTO } from '../../../../dto/colunaDTO';
-import { BotaoExtraDTO } from '../../../../dto/botao-extraDTO';
-import { CampanhaService } from '../../../../services/campanha.service';
 import { AtributoService } from '../../../../services/atributo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../../../services/toast.service';
@@ -23,8 +21,8 @@ export class AtributosList extends GenericList<AtributoDTO> {
         { field: 'id', header: 'Id', type: 'string' },
         { field: 'nome', header: 'Nome', type: 'string' },
         { field: 'tipoDado', header: 'Tipo de dado', type: 'string' },
-        { field: 'maximo', header: 'Máximo', type: 'string' },
-        { field: 'minimo', header: 'Mínimo', type: 'string' },
+        { field: 'maximo', header: 'Nível máximo', type: 'string' },
+        { field: 'minimo', header: 'Nível mínimo', type: 'string' },
     ];
 
     constructor(

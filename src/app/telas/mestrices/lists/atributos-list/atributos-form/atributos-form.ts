@@ -12,26 +12,29 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { Button } from 'primeng/button';
 import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
+import { EnumTipoDado } from '../../../../../enum/enum-tipo-dado';
+import { AutoComplete } from 'primeng/autocomplete';
+import { Select } from 'primeng/select';
 
 @Component({
     selector: 'app-atributos-form',
-    imports: [
-        Card,
-        TagModule,
-        FormsModule,
-        InputText,
-        InputTextModule,
-        FloatLabelModule,
-        Button,
-        Checkbox,
-        TableModule,
-    ],
+    imports: [Card, TagModule, FormsModule, InputText, InputTextModule, FloatLabelModule, Button, TableModule, Select],
     templateUrl: './atributos-form.html',
     styleUrl: './atributos-form.scss',
 })
 export class AtributosForm extends GenericForm<AtributoDTO> {
     override dto: AtributoDTO = new AtributoDTO();
     titulo = 'Atributo';
+
+    tiposDado: EnumTipoDado[] = [
+        EnumTipoDado.D4,
+        EnumTipoDado.D6,
+        EnumTipoDado.D8,
+        EnumTipoDado.D10,
+        EnumTipoDado.D12,
+        EnumTipoDado.D20,
+        EnumTipoDado.D100,
+    ];
 
     constructor(
         protected override service: AtributoService,
