@@ -10,10 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { InputText, InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { Button } from 'primeng/button';
-import { Checkbox } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
 import { EnumTipoDado } from '../../../../../enum/enum-tipo-dado';
-import { AutoComplete } from 'primeng/autocomplete';
 import { Select } from 'primeng/select';
 
 @Component({

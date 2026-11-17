@@ -20,6 +20,8 @@ import { PersonagensForm } from './telas/aventurices/lists/personagens-list/pers
 import { DashboardAventureiro } from './telas/aventurices/dashboard-aventureiro/dashboard-aventureiro';
 import { AtributosList } from './telas/mestrices/lists/atributos-list/atributos-list';
 import { AtributosForm } from './telas/mestrices/lists/atributos-list/atributos-form/atributos-form';
+import { ContadoresList } from './telas/mestrices/lists/contadores-list/contadores-list';
+import { ContadoresForm } from './telas/mestrices/lists/contadores-list/contadores-form/contadores-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -58,6 +60,10 @@ export const routes: Routes = [
                     { path: 'atributos-list', component: AtributosList },
                     { path: 'atributos-list/novo', component: AtributosForm },
                     { path: 'atributos-list/:id', component: AtributosForm },
+
+                    { path: 'contadores-list', component: ContadoresList },
+                    { path: 'contadores-list/novo', component: ContadoresForm },
+                    { path: 'contadores-list/:id', component: ContadoresForm },
                 ],
             },
         ],

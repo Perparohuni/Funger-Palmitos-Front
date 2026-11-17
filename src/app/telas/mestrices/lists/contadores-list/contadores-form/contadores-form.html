@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <p-card class="card">
+        <div class="header mb-5">
+            <div></div>
+            <p-tag severity="secondary">
+                <h2>{{ titulo }}</h2>
+            </p-tag>
+            <div>
+                <p-button
+                    icon="pi pi-arrow-left"
+                    severity="info"
+                    rounded="true"
+                    class="ml-0"
+                    [size]="'large'"
+                    (onClick)="goList()"
+                ></p-button>
+            </div>
+        </div>
+        <div class="grid">
+            <p-floatlabel class="mb-3 col-12">
+                <input class="w-full" pInputText [(ngModel)]="dto.nome" type="text" name="nome" />
+                <label for="nome">Nome</label>
+            </p-floatlabel>
+            <p-floatlabel class="mb-3 col-6">
+                <input class="w-full" pInputText [(ngModel)]="dto.maximo" type="text" name="maximo" />
+                <label for="maximo">Valor máximo possível</label>
+            </p-floatlabel>
+            <p-floatlabel class="mb-3 col-6">
+                <input class="w-full" pInputText [(ngModel)]="dto.minimo" type="text" name="minimo" />
+                <label for="maximo">Valor mínimo possível</label>
+            </p-floatlabel>
+            <div class="col-12">
+                <textarea
+                    class="w-full"
+                    placeholder="Descrição"
+                    pInputText
+                    id="senha"
+                    [(ngModel)]="dto.descricao"
+                    type="text"
+                    name="senha"
+                    style="min-height: 10rem; resize: none"
+                >
+                </textarea>
+            </div>
+            <div class="mt-4">
+                <p-button (onClick)="id ? editar() : salvar()" [style]="{ width: '8rem' }">Salvar</p-button>
+            </div>
+        </div>
+    </p-card>
+</div>
