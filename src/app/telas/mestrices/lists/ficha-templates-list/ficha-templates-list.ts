@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CardList } from '../../../../components/card-list/card-list';
 import { GenericList } from '../../../../components/generic-list/generic-list';
 import { FichaTemplateDTO } from '../../../../dto/ficha-templateDTO';
 import { CardDTO } from '../../../../dto/cardDTO';
-import { SistemaService } from '../../../../services/sistema.service';
+import { FichaTemplateService } from '../../../../services/ficha_template.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../../../../services/toast.service';
+import { EnumTipoService } from '../../../../enum/enum-tipo-service';
 
 @Component({
     selector: 'app-ficha-templates-list',
@@ -17,16 +20,16 @@ export class FichaTemplatesList extends GenericList<FichaTemplateDTO> {
     elementos: CardDTO<FichaTemplateDTO>[] = [{ field: 'nome', header: 'Nome', type: 'titulo' }];
 
     constructor(
-        protected override service: SistemaService,
+        protected override service: FichaTemplateService,
         protected override cdr: ChangeDetectorRef,
         protected override router: Router,
         protected override route: ActivatedRoute,
         protected override toast: ToastService,
     ) {
-        super(service, cdr, router, route, toast, EnumTipoService.GENERICO);
+        super(service, cdr, router, route, toast, EnumTipoService.SISTEMA);
     }
 
-    onCardClick(sistemaId: number) {
-        this.router.navigate(['../' + sistemaId], { relativeTo: this.route });
+    onCardClick(fichaTemplateId: number) {
+        this.router.navigate([fichaTemplateId], { relativeTo: this.route });
     }
 }

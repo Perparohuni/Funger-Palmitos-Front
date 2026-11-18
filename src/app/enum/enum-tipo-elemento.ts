@@ -1,0 +1,6 @@
+export enum EnumTipoElemento {
+    ATRIBUTO = 'ATRIBUTO',
+    CONTADOR = 'CONTADOR',
+    TEXTO_SIMPLES = 'TEXTO_SIMPLES',
+    CAMPO_TEXTO = 'CAMPO_TEXTO',
+}

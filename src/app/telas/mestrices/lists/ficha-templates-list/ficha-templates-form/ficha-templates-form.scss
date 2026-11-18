@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 95%;
+    background-color: var(--fundo);
+    border: 2px solid black;
+    box-shadow: 10px 10px 5px black;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
