@@ -24,6 +24,7 @@ import { ContadoresList } from './telas/mestrices/lists/contadores-list/contador
 import { ContadoresForm } from './telas/mestrices/lists/contadores-list/contadores-form/contadores-form';
 import { FichaTemplatesList } from './telas/mestrices/lists/ficha-templates-list/ficha-templates-list';
 import { FichaTemplatesForm } from './telas/mestrices/lists/ficha-templates-list/ficha-templates-form/ficha-templates-form';
+import { FichaEditorMestre } from './telas/mestrices/ficha-editor-mestre/ficha-editor-mestre';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -70,6 +71,7 @@ export const routes: Routes = [
                     { path: 'ficha-templates-list', component: FichaTemplatesList },
                     { path: 'ficha-templates-list/novo', component: FichaTemplatesForm },
                     { path: 'ficha-templates-list/:id', component: FichaTemplatesForm },
+                    { path: 'ficha-templates-list/:id/editor', component: FichaEditorMestre },
                 ],
             },
         ],

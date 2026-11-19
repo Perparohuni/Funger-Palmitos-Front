@@ -30,6 +30,6 @@ export class FichaTemplatesList extends GenericList<FichaTemplateDTO> {
     }
 
     onCardClick(fichaTemplateId: number) {
-        this.router.navigate([fichaTemplateId], { relativeTo: this.route });
+        this.router.navigate([fichaTemplateId + '/editor'], { relativeTo: this.route });
     }
 }

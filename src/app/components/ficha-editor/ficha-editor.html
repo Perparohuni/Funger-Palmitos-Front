@@ -1,1 +1,27 @@
-<p>ficha-editor works!</p>
+<div class="editor">
+    <p-toolbar>
+        <ng-template #start>
+            <div class="flex gap-2">
+                <p-button label="Texto" icon="pi pi-align-left" />
+                <p-button label="Atributo" icon="pi pi-plus" />
+                <p-button label="Contador" icon="pi pi-chart-bar" />
+            </div>
+        </ng-template>
+
+        <ng-template #end>
+            <div class="flex gap-2">
+                <p-button icon="pi pi-minus" />
+                <p-button icon="pi pi-plus" />
+                <p-button label="Salvar" icon="pi pi-save" />
+            </div>
+        </ng-template>
+    </p-toolbar>
+
+    <div class="view">
+        <div class="canvas-container">
+            <app-ficha-canvas [elementos]="elementos" (elementoSelecionado)="selecionarElemento($event)" />
+        </div>
+
+        <!-- Futuramente: painel de propriedades -->
+    </div>
+</div>

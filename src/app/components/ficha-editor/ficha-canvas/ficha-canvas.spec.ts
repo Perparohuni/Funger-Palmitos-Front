@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FichaEditorView } from './ficha-editor-view';
+import { FichaCanvas } from './ficha-canvas';
 
-describe('FichaEditorView', () => {
-    let component: FichaEditorView;
-    let fixture: ComponentFixture<FichaEditorView>;
+describe('FichaCanvas', () => {
+    let component: FichaCanvas;
+    let fixture: ComponentFixture<FichaCanvas>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [FichaEditorView],
+            imports: [FichaCanvas],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(FichaEditorView);
+        fixture = TestBed.createComponent(FichaCanvas);
         component = fixture.componentInstance;
         await fixture.whenStable();
     });

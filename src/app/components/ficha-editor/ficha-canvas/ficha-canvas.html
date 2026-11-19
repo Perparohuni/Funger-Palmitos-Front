@@ -1,0 +1,33 @@
+<div class="canvas-container">
+    <div class="canvas">
+        @for (elemento of elementos; track elemento.id) {
+            <div
+                class="elemento"
+                [style.left.px]="elemento.posX"
+                [style.top.px]="elemento.posY"
+                [style.width.px]="elemento.largura"
+                [style.height.px]="elemento.altura"
+                (click)="selecionar(elemento)"
+            >
+                @switch (elemento.tipo) {
+                    @case (tipoElemento.TEXTO_SIMPLES) {
+                        {{ elemento.configuracao?.texto }}
+                        Mr. mequetrefes
+                    }
+
+                    @case (tipoElemento.ATRIBUTO) {
+                        Atributo
+                    }
+
+                    @case (tipoElemento.CONTADOR) {
+                        Contador
+                    }
+
+                    @case (tipoElemento.CAMPO_TEXTO) {
+                        Imagem
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
